@@ -39,7 +39,8 @@ class Bank_project{
 						case 2:
 							System.out.println("Please enter new firstName to update");
 							String firstNameUpdate = read.nextLine();
-							u.setFirstName(firstNameUpdate);
+							String newFirstName = u.setFirstName(firstNameUpdate);
+							System.out.println("Your Updated First name is : " + newFirstName);
 							break;
 						case 3:
 							System.out.println("DELETE");
