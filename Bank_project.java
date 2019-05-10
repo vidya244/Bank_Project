@@ -3,18 +3,51 @@ import java.io.*;
 
 class Bank_project{
 
-	// ArrayList<User> users = new ArrayList<User>();
+	ArrayList<User> users = new ArrayList<User>();
+
+public static ArrayList<User> getUsers(){
+		return this.users;
+	}
+	
+	
+			
+public static void createUser(){
+
+		System.out.println("Enter First Name");
+		Scanner read = new Scanner(System.in);
+		String firstName = read.nextLine();
+
+		System.out.println("Enter Last Name");
+		String lastName = read.nextLine();
+
+		System.out.println("Enter your Age");
+		int age = read.nextInt();
+		read.nextLine();
+
+		System.out.println("Enter your SSN Number");
+		String ssn = read.nextLine();
+
+		System.out.println("Enter your ID");
+		int id = read.nextInt();
+		read.nextLine();
+
+		System.out.println("Enter your Email");
+		String email = read.nextLine();
+
+		User u = new User(firstName, lastName, age, ssn, id, email);
+	}
 
 	public static void main(String[] args){
 
-		// User u = new User("Ananya", "Bogaram",20, 1234567891, "ananya@gmail.com");
-		// System.out.println(u.firstName);
-		// boolean exit = true;
-
-		User u = new User();
-		Bank b = new Bank();
 		
-		// while(!exit){
+
+		boolean isExit = true;	
+		Bank b = new Bank();
+	
+
+		
+		while(isExit){
+
 			System.out.println("Please Enter your Cjoice:\n 1)USER\n2)BANK\n3)EXIT");
 			Scanner read = new Scanner(System.in);
 			int option = read.nextInt();
@@ -23,31 +56,42 @@ class Bank_project{
 			switch(option){
 				case 1:
 
-					System.out.println("Please enter your choice: 1) CREATE USER\n 2)UPDATE USER\n 3)DELETE USER\n4)EXIT");
+					System.out.println("Please enter your choice: \n 1) CREATE USER\n 2)UPDATE USER\n 3)DELETE USER\n4)EXIT");
 
 					int choiceU = read.nextInt();
 
 					switch(choiceU){
 						case 1:
-							u.createUser();
+							createUser();					
 							System.out.println("SHOW USERS");
-							ArrayList<User> users = u.getUsers();
+							ArrayList<User> users = new ArrayList<User>();
+							users = getUsers();
 							users.forEach(user->System.out.println(user.toString()));
 							// users.add(u);
-							// System.out.println("First Name:  "+ u.firstName);
+							System.out.println("First Name:  "+ users.firstName);
 							break;
 						case 2:
-							System.out.println("Please enter new firstName to update");
-							String firstNameUpdate = read.nextLine();
-							String newFirstName = u.setFirstName(firstNameUpdate);
-							System.out.println("Your Updated First name is : " + newFirstName);
+							// System.out.println("Please enter new firstName to update");
+							// String firstNameUpdate = read.nextLine();
+							// String newFirstName = u.updateUser(firstNameUpdate);
+
+
+							// String updateFirstName = u.updateUser();
+							// System.out.println("Your Updated First name is : " + updateFirstName);
+							// System.out.println("SHOW USERS");
+							// u.getUsers();
+							// users.forEach(newUser->System.out.println(newUser.toString()));
+				
+
+							// u.updateUser();
+
 							break;
 						case 3:
 							System.out.println("DELETE");
 							break;
-						// case 4:
-						// 	exit = false;
-						// 	break;
+						case 4:
+							isExit = !isExit;
+							break;
 						default: 
 							System.out.println("Please Enter Valid input");
 							break;
@@ -71,18 +115,20 @@ class Bank_project{
 							case 3:
 								System.out.println("DELETE");
 								break;
-							// case 4:
-							// 	exit = false;
-							// 	break;
+							case 4:
+								isExit = !isExit;
+								break;
 							default: 
 								System.out.println("Please Enter Valid input");
 								break;
 						}
 						break;
-				// case 3: 
-				// 	exit = false;
+				case 3: 
+
+					isExit = !isExit;
+					break;
 			}
 		}
-
-	}		
+	}
+}		
 
